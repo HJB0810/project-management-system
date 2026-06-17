@@ -5,7 +5,7 @@ from .models import Project
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['name', 'description', 'status']
+        fields = ['name', 'description','members', 'status']
 
         widgets = {
             'name': forms.TextInput(attrs={
@@ -16,6 +16,7 @@ class ProjectForm(forms.ModelForm):
                 'class': 'form-control',
                 'rows': 4
             }),
+            'members':forms.CheckboxSelectMultiple(),
 
             'status': forms.Select(attrs={
                 'class': 'form-select'

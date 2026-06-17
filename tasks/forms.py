@@ -2,6 +2,15 @@ from django import forms
 from .models import Task
 
 class Task_Form(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        user=kwargs.pop('user',None)
+        super().__init__(*args,**kwargs)
+        if user:
+            self.fields['project'].queryset=(
+                user.joined_project.all()  |
+                user.created_project.all()
+            ).distinct()
+            
     class Meta:
         model=Task
         fields=['title','description','project','assigned_to',

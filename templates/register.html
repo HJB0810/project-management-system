@@ -56,9 +56,9 @@
 
             <!-- Display Form Errors -->
             {% if form.errors %}
-                <div class="alert alert-danger">
-                    Please correct the errors below.
-                </div>
+            <div class="alert alert-danger">
+                {{ form.errors }}
+            </div>
             {% endif %}
 
             <form method="POST" action="{% url 'register' %}">

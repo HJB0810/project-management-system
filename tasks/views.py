@@ -24,7 +24,7 @@ def task_create(request):
 def task_update(request, pk):
     task = get_object_or_404( Task,pk=pk,assigned_to=request.user)
     if request.method == 'POST':
-        form = Task_Form(request.POST,instance=task)
+        form = Task_Form(request.POST,user=request.user,instance=task)
         if form.is_valid():
             form.save()
             return redirect('task_list')

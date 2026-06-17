@@ -27,14 +27,19 @@
     <div class="card mb-3">
 
         <div class="card-body">
+            
+            <h5 class="card-title">
+                <a href="{%url 'project_detail' project.id%}"
+                class="text-decoration-none text-black">
+               Project Name:  {{ project.name }}
+                </a>
+            </h5>
 
-            <h5>{{ project.name }}</h5>
-
-            <p>{{ project.description }}</p>
+            <p>Description:  {{ project.description }}</p>
 
             <span class="badge bg-info">
 
-                {{ project.status }}
+                Status:  {{ project.status }}
 
             </span>
 
@@ -53,21 +58,23 @@
                     Delete
 
                 </a>
-
             </div>
+           
+<p class="mt-2">
+    <strong>Members:</strong>
 
-        </div>
-
-    </div>
-
+    {% for member in project.members.all %}
+        <span class="badge bg-secondary px-2 py-1 me-1">
+            {{ member.username }}
+        </span>
     {% empty %}
-
-    <div class="alert alert-info">
-        No Projects Found
-    </div>
-
+        <span class="text-muted">No Members</span>
     {% endfor %}
-
+</p> 
 </div>
-
+</div>
+{%empty%}
+   <p> No Project found</p>
+{% endfor%}
+</div>
 {% endblock %}

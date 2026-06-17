@@ -12,8 +12,11 @@
     <a class="nav-link px-2 py-2 {% if request.resolver_match.url_name == 'dashboard' %}active-tab {% else %}text-muted{% endif %}" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link px-2 py-2 {% if request.resolver_match.url_name == 'project_list' %}active-tab underline{% else %}text-muted{% endif %}" href="{% url 'project_list' %}">Projects</a>
-  </li>
+    <a class="nav-link {% if request.resolver_match.url_name in 'project_list project_detail project_create project_update project_delete' %}active-tab{% endif %}"
+       href="{% url 'project_list' %}">
+        Projects
+    </a>
+</li>
   <li class="nav-item">
     <a class="nav-link px-2 py-2 {% if request.resolver_match.url_name == 'task_list' %}active-tab underline{% else %}text-muted{% endif %}" href="{% url 'task_list' %}">Tasks</a>
   </li>
