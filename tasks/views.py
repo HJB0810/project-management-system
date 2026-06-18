@@ -2,11 +2,18 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import Task_Form
+from django.db.models import Q
 # Create your views here.
 # 
 @login_required
 def task_list(request):
     tasks=Task.objects.filter(assigned_to=request.user)
+    search=request.GET.get('search')
+    if search:
+        tasks=tasks.filter(
+            Q(title__icontains=search)|
+            Q(description__icontains=search)
+        )
     return render(request,'task_list.html',{'tasks':tasks})
 
 @login_required

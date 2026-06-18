@@ -26,16 +26,34 @@
 
     <ul>
         {% for member in project.members.all %}
-            <li>{{ member.username }}</li>
-        {% empty %}
-            <li>No Members</li>
+            <span class="badge bg-secondary me-1">
+        {{ member.username }}
+    </span>
+{% empty %}
+    <span class="text-muted">
+        No Members
+    </span>
         {% endfor %}
     </ul>
 
     <hr>
 
     <h4>Tasks</h4>
+<h5>Project Progress</h5>
 
+<div class="progress mb-4">
+
+    <div class="progress-bar
+    {%if progress == 100 %}bg-success
+    {% elif progress >= 50 %}bg-info
+    {%else%}bg-warning
+    {%endif%}"
+    style="width: {{ progress }}%;">{%if progress > 0 %}
+        {{ progress }}%
+        {%endif%}
+    </div>
+
+</div>
     <ul>
         {% for task in tasks %}
             <li>

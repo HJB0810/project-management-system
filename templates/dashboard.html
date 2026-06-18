@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary shadow-sm mb-4">
     <div class="container-fluid d-flex align-items-center" style="text-align:center";>
         <div style="width: 80px;" class="d-none d-lg-block"></div>
         <span class="navbar-brand mb-0 h1 fs-5 text-secondary mx-auto text-center text-white fw-bold">
@@ -26,12 +26,12 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
+ <div class="row g-4">
+        <div class="col-md-6 col-sm-6">
             <div class="card border-0 shadow-sm bg-body rounded">
                 <div class="card-body  p-4" style="color: black;">
                     <h6 class="card-subtitle  mb-2 text-muted text-uppercase small fw-bold tracking-wider" style="color:red;">
-                        Total Projects
+                        Projects
                     </h6>
                     <h2 class="card-title display-6 fw-bold text-primary mb-0">
                         {{ total_projects }}
@@ -39,15 +39,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 
 
-<div class="row">
-        <div class="col-md-4 col-sm-6">
+
+        <div class="col-md-6 col-sm-6">
             <div class="card border-0 shadow-sm bg-body rounded">
                 <div class="card-body  p-4" style="color: black;">
                     <h6 class="card-subtitle  mb-2 text-muted text-uppercase small fw-bold tracking-wider" style="color:red;">
-                        Total Tasks
+                        Tasks
                     </h6>
                     <h2 class="card-title display-6 fw-bold text-primary mb-0">
                         {{ total_tasks }}
@@ -55,14 +55,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 
-<div class="row">
-        <div class="col-md-4 col-sm-6">
+
+        <div class="col-md-6 col-sm-6">
             <div class="card border-0 shadow-sm bg-body rounded">
                 <div class="card-body  p-4" style="color: black;">
                     <h6 class="card-subtitle  mb-2 text-muted text-uppercase small fw-bold tracking-wider" style="color:red;">
-                        Completed_tasks
+                        Completed tasks
                     </h6>
                     <h2 class="card-title display-6 fw-bold text-primary mb-0">
                         {{ completed_tasks }}
@@ -70,7 +70,21 @@
                 </div>
             </div>
         </div>
-    </div>
+   
+
+        <div class="col-md-6 col-sm-6">
+            <div class="card border-0 shadow-sm bg-body rounded">
+                <div class="card-body  p-4" style="color: black;">
+                    <h6 class="card-subtitle  mb-2 text-muted text-uppercase small fw-bold tracking-wider" style="color:red;">
+                        Pending tasks
+                    </h6>
+                    <h2 class="card-title display-6 fw-bold text-primary mb-0">
+                        {{ pending_tasks }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+ </div>
 <div class="card mt-4">
     <div class="card-header">
       <strong>  Recent Tasks</strong>
@@ -84,6 +98,7 @@
                     <span class="badge bg-primary float-end">
                         {{ task.status }}
                     </span>
+                   
                 </li>
             {% empty %}
                 <li class="list-group-item">

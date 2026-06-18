@@ -7,8 +7,8 @@ class Task_Form(forms.ModelForm):
         super().__init__(*args,**kwargs)
         if user:
             self.fields['project'].queryset=(
-                user.joined_project.all()  |
-                user.created_project.all()
+                user.joined_projects.all()  |
+                user.created_projects.all()
             ).distinct()
             
     class Meta:

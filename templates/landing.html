@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">
+            Project Management System
+        </h1>
+
+        <p class="lead mt-3">
+            Organize projects, assign tasks, track progress,
+            and collaborate with your team efficiently.
+        </p>
+
+        <div class="mt-4">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg me-2">
+                Get Started
+            </a>
+
+            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">
+                Login
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            Features
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h4>Project Management</h4>
+                        <p>
+                            Create, update and manage multiple projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h4>Task Assignment</h4>
+                        <p>
+                            Assign tasks to team members and track progress.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h4>Team Collaboration</h4>
+                        <p>
+                            Work together efficiently with project members.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            How It Works
+        </h2>
+
+        <div class="row text-center">
+
+            <div class="card shadow-sm h-100 col-md-4">
+                <h3>1</h3>
+                <h5>Create Project</h5>
+                <p>Create your project and invite members.</p>
+            </div>
+
+            <div class="card shadow-sm h-100 col-md-4">
+                <h3>2</h3>
+                <h5>Assign Tasks</h5>
+                <p>Allocate work to team members.</p>
+            </div>
+
+            <div class="card shadow-sm h-100 col-md-4">
+                <h3>3</h3>
+                <h5>Track Progress</h5>
+                <p>Monitor completion status easily.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-5 text-center">
+    <div class="container">
+        <h2>
+            Ready to Manage Your Projects?
+        </h2>
+
+        <p class="mt-3">
+            Start organizing your work and collaborate with your team today.
+        </p>
+
+        <a href="{% url 'register' %}"
+           class="btn btn-primary btn-lg">
+            Create Free Account
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">
+        © 2026 Project Management System | Built with Django & Bootstrap
+    </p>
+</footer>
+
+{% endblock %}

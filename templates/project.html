@@ -21,7 +21,16 @@
             Create Project
         </a>
     </div>
+  <form method="GET" class="mb-4">
+     
+    <div class="input-group">
 
+        <input type="text" name="search" class="form-control" placeholder="Search Projects..." value="{{ request.GET.search }}">
+
+        <button class="btn btn-primary" type="submit"> Search </button>
+
+    </div>
+</form>
     {% for project in projects %}
 
     <div class="card mb-3">

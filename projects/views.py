@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Project
 from .forms import ProjectForm
 from django.db.models import Q
+from django.db.models import Count
 
 # Create your views here.
 @login_required
@@ -11,6 +12,12 @@ def project_list(request):
         Q(created_by=request.user)  |
         Q(members=request.user)
     ).distinct()
+    search=request.GET.get('search')
+    if search:
+        projects=projects.filter(
+            Q(name__icontains=search)|
+            Q(description__icontains=search)
+        )
     return render(request,'project.html',{'projects':projects})
 
 @login_required
@@ -55,5 +62,12 @@ def project_delete(request, pk):
 def project_detail(request,pk):
     project=get_object_or_404(Project,pk=pk)
     tasks=project.tasks.all()
+    total_tasks=tasks.count()
+    completed_tasks=tasks.filter(status='Completed').count()
+    if total_tasks>0:
+        progress=int((completed_tasks/total_tasks)*100)
+    else: 
+        progress=0
+    
     return render(request,'project_details.html',
-                  {'project':project,'tasks':tasks})
+                  {'project':project,'tasks':tasks,'progress':progress})

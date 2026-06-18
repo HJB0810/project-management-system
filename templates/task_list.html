@@ -12,68 +12,60 @@
     </div>
 </nav>
 <div class="container mt-5">
-
-    <div class="d-flex justify-content-between">
-
+     <div class="d-flex justify-content-between">
         <h2>My Tasks</h2>
-
         <a href="{% url 'task_create' %}"
            class="btn btn-primary">
-
-            Create Task
-
-        </a>
-
-    </div>
+            Create Task</a>
+         </div>
 
     <br>
-
+<form method="GET" class="mb-4">
+    
+    <div class="input-group">
+         <input type="text" name="search" class="form-control" placeholder="Search Tasks..." value="{{ request.GET.search }}">
+        <button class="btn btn-success"  type="submit"> Search</button>
+    </div>
+</form>
     {% for task in tasks %}
 
     <div class="card mb-3">
 
         <div class="card-body">
-
-            <h5>Title: {{ task.title }}</h5>
-
+             <h5>Title: {{ task.title }}</h5>
             <p>Description:  {{ task.description }}</p>
-
             <p>Project:  {{ task.project }}</p>
-
             <p>Status:  {{ task.status }}</p>
-
             <p>Priority:  {{ task.priority }}</p>
-
             <p>Due: {{ task.due_date }}</p>
-
             <a href="{% url 'task_update' task.id %}"
                class="btn btn-warning">
-
                 Edit
-
             </a>
-
             <a href="{% url 'task_delete' task.id %}"
                class="btn btn-danger">
-
-                Delete
-
-            </a>
-
-        </div>
-
-    </div>
-
+               Delete</a>
+            </div>
+         </div>
     {% empty %}
-
     <div class="alert alert-info">
-
-        No Tasks Found
-
+        No Tasks found
     </div>
-
     {% endfor %}
+{% if task.status == 'Completed' %}
+    <span class="badge bg-success">
+        Completed
+    </span>
 
+{% elif task.status == 'Pending' %}
+    <span class="badge bg-warning">
+        Pending
+    </span>
+
+{% else %}
+    <span class="badge bg-info">
+        {{ task.status }}
+    </span>
+{% endif %}
 </div>
-
 {% endblock %}
