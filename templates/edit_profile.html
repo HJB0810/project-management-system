@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Edit Profile</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                 {% csrf_token %}
+                <div class="mb-3">
+                 {{ form.username.label_tag }}
+                 {{ form.username }}
+                   <small class="text-muted d-block">
+                    {{ form.username.help_text }}
+                   </small>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                 <button class="btn btn-success">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
