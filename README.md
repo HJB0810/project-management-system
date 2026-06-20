@@ -172,9 +172,5 @@ core/
 
 ---
 
-## Author
-
-Harshal Bhangale
-
 
 
