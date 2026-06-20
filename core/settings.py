@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'api',
     'accounts',
     'tasks',
     'projects',
@@ -134,3 +136,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 LOGIN_URL ='login'
 LOGIN_REDIRECT_URL='dashboard'
 LOGIN_REDIRECT_URL='login'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}

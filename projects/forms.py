@@ -16,8 +16,9 @@ class ProjectForm(forms.ModelForm):
                 'class': 'form-control',
                 'rows': 4
             }),
-            'members':forms.CheckboxSelectMultiple(),
-
+             'members': forms.SelectMultiple(attrs={
+                    'class': 'form-control'}
+             ),
             'status': forms.Select(attrs={
                 'class': 'form-select'
             }),

@@ -20,7 +20,7 @@ def register_view(request):
                )
            return redirect('login')
        else:
-           print(form.errors)
+           messages.error(request,"Invalid form data")
    else:
          form =RegisterForm()
    return render(request,'register.html',
@@ -28,8 +28,6 @@ def register_view(request):
                      )
 
 def login_view(request):
-   # if request.user.is_authenticated:
-    #    return redirect('dashboard')
     if request.method == 'POST':
         form = AuthenticationForm(
             request,

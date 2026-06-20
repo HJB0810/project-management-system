@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from projects.models import Project
-# Create your models here.
+
 class Task(models.Model):
     STATUS_CHOICES=[
         ('To Do','To Do'),
@@ -25,3 +25,4 @@ class Task(models.Model):
     
     def __str__(self):
         return self.title
+    
