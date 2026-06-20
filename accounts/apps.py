@@ -10,7 +10,7 @@ class AccountsConfig(AppConfig):
         # create admin only if not exists
         if not User.objects.filter(username="admin").exists():
             User.objects.create_superuser(
-                username="Harshal",
+                username="admin",
                 email="admin@test.com",
                 password="Hitesh@2013"
             )
